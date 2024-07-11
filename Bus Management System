@@ -1,0 +1,82 @@
+import java.util.Scanner;
+interface BusManagement {
+    void busNumber(String number);
+    void route(String route);
+    void capacity(int capacity);
+    void displayBusDetails();
+}
+
+class Bus {
+    private String busNumber;
+    private String route;
+    private int capacity;
+
+    public void setBusNumber(String number) {
+        this.busNumber = number;
+    }
+
+    public void setRoute(String route) {
+        this.route = route;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public String getBusNumber() {
+        return busNumber;
+    }
+
+    public String getRoute() {
+        return route;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+}
+
+class BusManager extends Bus implements BusManagement {
+    public void busNumber(String number) {
+        super.setBusNumber(number);
+    }
+
+    public void route(String route) {
+        super.setRoute(route);
+    }
+
+    public void capacity(int capacity) {
+        super.setCapacity(capacity);
+    }
+
+    public void displayBusDetails() {
+        System.out.println("Bus Number: " + getBusNumber());
+        System.out.println("Route: " + getRoute());
+        System.out.println("Capacity: " + getCapacity());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Bus Number:");
+        String busNumber = sc.next();
+
+        System.out.println("Enter Route:");
+        String route = sc.next();
+
+        System.out.println("Enter Capacity:");
+        int capacity = sc.nextInt();
+
+        BusManager bus = new BusManager();
+        bus.busNumber(busNumber);
+        bus.route(route);
+        bus.capacity(capacity);
+
+        System.out.println("\nBus Details:");
+        bus.displayBusDetails();
+
+        sc.close();
+    }
+}
